@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://cmyubviqi8rnm"]
+
+[ext_resource type="Script" uid="uid://34uxjwpa807a" path="res://scenes/player_goose.gd" id="1_sh6gi"]
+[ext_resource type="Texture2D" uid="uid://cmj88ixjw55pn" path="res://assets/img/jumping_animation/frame0001.png" id="2_bigf0"]
+[ext_resource type="Texture2D" uid="uid://dxr4k5x5udecv" path="res://assets/img/jumping_animation/frame0002.png" id="3_ivk0p"]
+[ext_resource type="Texture2D" uid="uid://8r1d0ph4hykm" path="res://assets/img/jumping_animation/frame0003.png" id="4_ncple"]
+[ext_resource type="Texture2D" uid="uid://10g587fusd0k" path="res://assets/img/jumping_animation/frame0004.png" id="5_kk3q6"]
+[ext_resource type="Texture2D" uid="uid://vgrqalm12cnr" path="res://assets/img/jumping_animation/frame0007.png" id="6_gkr3t"]
+[ext_resource type="Texture2D" uid="uid://cc74kinavuelb" path="res://assets/img/jumping_animation/frame0008.png" id="7_1wk6e"]
+[ext_resource type="Texture2D" uid="uid://co7whga5jlowh" path="res://assets/img/jumping_animation/frame0009.png" id="8_qgbey"]
+[ext_resource type="Texture2D" uid="uid://dqhxxcrvx1fmu" path="res://assets/img/walking_animation/frame0001.png" id="9_fxwmb"]
+[ext_resource type="Texture2D" uid="uid://euqa20c2r3s0" path="res://assets/img/walking_animation/frame0002.png" id="10_ooh2d"]
+[ext_resource type="Texture2D" uid="uid://crnj06ehgu2cp" path="res://assets/img/walking_animation/frame0003.png" id="11_06oi4"]
+[ext_resource type="Texture2D" uid="uid://csvc0clnvv6bk" path="res://assets/img/walking_animation/frame0004.png" id="12_vgiof"]
+[ext_resource type="Texture2D" uid="uid://da0c73h2a1pg1" path="res://assets/img/walking_animation/frame0005.png" id="13_hsxt2"]
+[ext_resource type="Texture2D" uid="uid://bldyjlnkm1kos" path="res://assets/img/walking_animation/frame0006.png" id="14_uafva"]
+[ext_resource type="Texture2D" uid="uid://ddcfior252aqy" path="res://assets/img/walking_animation/frame0007.png" id="15_7802j"]
+[ext_resource type="Texture2D" uid="uid://1vh56siw4ejg" path="res://assets/img/walking_animation/frame0008.png" id="16_tyxtb"]
+[ext_resource type="AudioStream" uid="uid://v054lasqhwsd" path="res://assets/sound/jump.mp3" id="17_klvbt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7ankg"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"flying",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bigf0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ivk0p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ncple")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_kk3q6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_gkr3t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_1wk6e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qgbey")
+}],
+"loop": true,
+"name": &"jumping",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_fxwmb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ooh2d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_06oi4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_vgiof")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_hsxt2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_uafva")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_7802j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_tyxtb")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6d2e4"]
+size = Vector2(109, 169.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6lhh2"]
+size = Vector2(108, 133)
+
+[node name="PlayerGoose" type="CharacterBody2D" unique_id=227304361]
+script = ExtResource("1_sh6gi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=475421017]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_7ankg")
+animation = &"jumping"
+autoplay = "walking"
+frame = 6
+frame_progress = 0.999601
+
+[node name="RunCol" type="CollisionShape2D" parent="." unique_id=1828616774]
+position = Vector2(-29, 8.375)
+shape = SubResource("RectangleShape2D_6d2e4")
+
+[node name="DuckCol" type="CollisionShape2D" parent="." unique_id=654207593]
+position = Vector2(-29, 26.5)
+shape = SubResource("RectangleShape2D_6lhh2")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1327752144]
+stream = ExtResource("17_klvbt")
