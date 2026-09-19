@@ -13,6 +13,13 @@ script = ExtResource("1_ig7tw")
 
 [node name="Timer" type="Timer" parent="." unique_id=808134426]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1975547242]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=708438062]
+
+offset_right = 40.0
+offset_bottom = 23.0
+
 [node name="ObstacleManager" type="Node2D" parent="." unique_id=1674728517]
 script = ExtResource("2_0xm2m")
 obstacle_scenes = Array[PackedScene]([ExtResource("3_lquwl"), ExtResource("4_7mycd"), ExtResource("5_272bh")])
