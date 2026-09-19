@@ -126,9 +126,9 @@ script = ExtResource("1_sh6gi")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=475421017]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_7ankg")
-animation = &"walking"
+animation = &"flying"
 autoplay = "walking"
-frame_progress = 0.20429267
+frame_progress = 0.36998838
 
 [node name="RunCol" type="CollisionShape2D" parent="." unique_id=1828616774]
 position = Vector2(-29, 8.875)
