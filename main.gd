@@ -11,7 +11,7 @@ const START_URL = "http://" + PHONE_IP + "/control?cmd=start"
 # 🎯 LOCKED-IN HARDCODED EMPIRICAL THRESHOLDS
 const JUMP_FORCE_LIMIT = 10.0    
 const DUCK_FORCE_LIMIT = -10.0   
-const CHARGE_FORCE_LIMIT = 8000.0  
+const CHARGE_FORCE_LIMIT = 10.0  
 
 # Single global cooldown timer variable
 var global_cooldown = 0.0
