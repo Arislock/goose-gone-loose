@@ -8,3 +8,9 @@ script = ExtResource("1_ig7tw")
 [node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=1732786140]
 
 [node name="Timer" type="Timer" parent="." unique_id=808134426]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1975547242]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=708438062]
+offset_right = 40.0
+offset_bottom = 23.0
