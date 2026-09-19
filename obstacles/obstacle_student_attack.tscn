@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bemruila1qwi0"]
+
+[ext_resource type="Script" uid="uid://d0l8gp2jyilv" path="res://obstacles/obstacle_student_attack.gd" id="1_tj0dt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wgkke"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qk25g"]
+
+[node name="ObstacleStudent" type="Area2D" unique_id=949342224]
+collision_layer = 2
+script = ExtResource("1_tj0dt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1350919211]
+shape = SubResource("RectangleShape2D_wgkke")
+
+[node name="AttackZone" type="Area2D" parent="." unique_id=667228612]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=717399599]
+shape = SubResource("RectangleShape2D_qk25g")
