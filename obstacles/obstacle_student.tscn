@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://chigfk78xleb6"]
+
+[ext_resource type="Script" uid="uid://dxldttdjktbjj" path="res://obstacles/obstacle_student.gd" id="1_vrua5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wgkke"]
+size = Vector2(64, 64)
+
+[node name="ObstacleStudent" type="Area2D" unique_id=949342224]
+collision_layer = 2
+script = ExtResource("1_vrua5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1350919211]
+shape = SubResource("RectangleShape2D_wgkke")
