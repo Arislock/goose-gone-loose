@@ -8,3 +8,7 @@ script = ExtResource("1_ig7tw")
 [node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=1732786140]
 
 [node name="Timer" type="Timer" parent="." unique_id=808134426]
+
+[node name="ObstacleManager" type="Node2D" parent="." unique_id=1674728517]
+
+[node name="SpawnTimer" type="Timer" parent="ObstacleManager" unique_id=272148650]
