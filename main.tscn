@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://chr7kxy8wyfjr"]
+
+[ext_resource type="Script" uid="uid://di67obud8d8fv" path="res://main.gd" id="1_ig7tw"]
+
+[node name="Main" type="Node2D" unique_id=158365187]
+script = ExtResource("1_ig7tw")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=1732786140]
+
+[node name="Timer" type="Timer" parent="." unique_id=808134426]
