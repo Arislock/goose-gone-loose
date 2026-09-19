@@ -1,4 +1,5 @@
 extends Node2D
+extends Node
 
 @onready var http_request = $HTTPRequest
 
