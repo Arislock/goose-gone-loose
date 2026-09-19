@@ -2,9 +2,13 @@
 
 [ext_resource type="Script" uid="uid://di67obud8d8fv" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://xelgy2dc5bl7" path="res://obstacle_manager.gd" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://c6lro6605csuq" path="res://assets/background/bg1.png" id="2_7mycd"]
+[ext_resource type="Texture2D" uid="uid://dsky4gwo3j5a8" path="res://assets/background/bg2.png" id="3_kek77"]
 [ext_resource type="PackedScene" uid="uid://h6iu4q2vwa6" path="res://obstacles/obstacle_backpack.tscn" id="3_lquwl"]
+[ext_resource type="Texture2D" uid="uid://dltmv8pi2umwn" path="res://assets/background/bg3.png" id="4_4c57u"]
 [ext_resource type="PackedScene" uid="uid://b1i3mb7nfi0rn" path="res://obstacles/obstacle_ion.tscn" id="4_7mycd"]
 [ext_resource type="PackedScene" uid="uid://chigfk78xleb6" path="res://obstacles/obstacle_student.tscn" id="5_272bh"]
+[ext_resource type="Texture2D" uid="uid://ckk571rpxs4cf" path="res://assets/background/bg4.png" id="5_efxa6"]
 
 [node name="Main" type="Node2D" unique_id=158365187]
 script = ExtResource("1_ig7tw")
@@ -13,10 +17,43 @@ script = ExtResource("1_ig7tw")
 
 [node name="Timer" type="Timer" parent="." unique_id=808134426]
 
+[node name="Background" type="Node2D" parent="." unique_id=1195202138]
+
+[node name="sky" type="Parallax2D" parent="Background" unique_id=313297852]
+scroll_scale = Vector2(0.1, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/sky" unique_id=196882979]
+position = Vector2(864, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_7mycd")
+
+[node name="far buildings" type="Parallax2D" parent="Background" unique_id=397077000]
+scroll_scale = Vector2(0.3, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/far buildings" unique_id=1818653408]
+position = Vector2(864, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_kek77")
+
+[node name="near buildings" type="Parallax2D" parent="Background" unique_id=1240196064]
+scroll_scale = Vector2(0.5, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/near buildings" unique_id=1552937901]
+position = Vector2(864, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_4c57u")
+
+[node name="road" type="Parallax2D" parent="Background" unique_id=248066307]
+scroll_scale = Vector2(0.7, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/road" unique_id=870108234]
+position = Vector2(864, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("5_efxa6")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1975547242]
 
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=708438062]
-
 offset_right = 40.0
 offset_bottom = 23.0
 
