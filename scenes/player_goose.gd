@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 const GRAVITY : int = 4200
 const JUMP_SPEED : int = -1700
+var is_alive: bool = true
 
 func _ready():
 	if SignalBus.has_signal("goose_jumped"):
@@ -31,3 +32,10 @@ func trigger_jump():
 func on_jump():
 	print("SPRITE SCRIPT JUMP")
 	trigger_jump()
+	
+func on_hit_obstacle():
+	if not is_alive:
+		return
+	is_alive = false
+	$AnimatedSprite2D.play("crash")
+	SignalBus.game_over.emit()

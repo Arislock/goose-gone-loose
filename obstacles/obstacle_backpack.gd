@@ -13,6 +13,7 @@ func _ready():
 func _process(delta):
 	position.x -= speed * delta
 	if global_position.x < -200:
+		SignalBus.obstacle_passed.emit()
 		queue_free()
 
 func _on_body_entered(body):
