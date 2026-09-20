@@ -33,6 +33,7 @@ func new_game():
 	$Ground.position = Vector2i(1440.0,1006)
 	
 	$HUD.get_node("Start").show()
+	$HUD.get_node("StartScreen").show()
 	$HUD.get_node("game over text").hide()
 
 func _process(delta): 
@@ -58,6 +59,7 @@ func _process(delta):
 		if Input.is_action_pressed("ui_accept"):
 			game_running = true
 			$HUD.get_node("Start").hide()
+			$HUD.get_node("StartScreen").hide()
 
 func show_score():
 	$HUD.get_node("Score").text = "SCORE: " + str(score/SCORE_MODIFIER)
