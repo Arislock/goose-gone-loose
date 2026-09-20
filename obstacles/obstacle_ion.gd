@@ -8,7 +8,7 @@ func _ready():
 
 func _process(delta):
 	var camera_x = get_tree().current_scene.get_node("Camera2D").position.x
-	if global_position.x < camera_x - 1000:
+	if global_position.x < camera_x - 2000:
 		SignalBus.obstacle_passed.emit()
 		queue_free()
 
