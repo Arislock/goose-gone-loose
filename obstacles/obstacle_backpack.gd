@@ -11,7 +11,8 @@ func _ready():
 		sprite.texture = backpack_textures[randi() % backpack_textures.size()]
 
 func _process(delta):
-	if global_position.x < $"..".get_node("Camera2D").position.x - 200:
+	var camera_x = get_tree().current_scene.get_node("Camera2D").position.x
+	if global_position.x < camera_x - 1000:
 		SignalBus.obstacle_passed.emit()
 		queue_free()
 

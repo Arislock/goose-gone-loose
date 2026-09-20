@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 SignalBus="*uid://cr5cigl6nx84r"
-Score="*uid://dh57ig4i5rw42"
 
 [display]
 

@@ -130,9 +130,9 @@ HONK! into your mic to disperse crowds"
 script = ExtResource("2_0xm2m")
 obstacle_scenes = Array[PackedScene]([ExtResource("3_lquwl"), ExtResource("4_7mycd"), ExtResource("9_dg77c")])
 obstacle_ion = ExtResource("4_7mycd")
+obstacle_student = ExtResource("9_dg77c")
 
 [node name="SpawnTimer" type="Timer" parent="ObstacleManager" unique_id=272148650]
-wait_time = 1.5
 autostart = true
 
 [node name="PlayerGoose" parent="." unique_id=227304361 instance=ExtResource("7_5vw27")]

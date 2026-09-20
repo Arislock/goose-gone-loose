@@ -61,7 +61,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("9_authy")
 }],
-"loop": false,
+"loop": 0,
 "name": &"attacking",
 "speed": 5.0
 }, {
@@ -123,7 +123,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_5ckam")
 }],
-"loop": true,
+"loop": 1,
 "name": &"flying",
 "speed": 12.0
 }, {
@@ -149,7 +149,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("8_qgbey")
 }],
-"loop": true,
+"loop": 1,
 "name": &"jumping",
 "speed": 12.0
 }, {
@@ -178,7 +178,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("16_tyxtb")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walking",
 "speed": 12.0
 }]
@@ -186,7 +186,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6d2e4"]
 size = Vector2(109, 170.25)
 
-[node name="PlayerGoose" type="CharacterBody2D" unique_id=227304361]
+[node name="PlayerGoose" type="CharacterBody2D" unique_id=227304361 groups=["player"]]
 z_index = 1
 script = ExtResource("1_sh6gi")
 

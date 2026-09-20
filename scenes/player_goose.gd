@@ -96,8 +96,18 @@ func _on_animation_finished():
 	if sprite.animation == "attacking": is_attacking = false
 
 func on_hit_obstacle():
+	print("on_hit_obstacle CALLED")
 	if not is_alive:
+		print("already dead, skipping")
 		return
 	is_alive = false
-	sprite.play("jumping") # swap for a real "crash" animation once you have one
+	sprite.play("jumping")
 	SignalBus.game_over.emit()
+	print("game_over emitted")
+	
+func _on_body_entered(body):
+	print("Collision detected with: ", body.name)
+	print("Is in player group: ", body.is_in_group("player"))
+	if body.is_in_group("player"):
+		body.on_hit_obstacle()
+		queue_free()

@@ -7,7 +7,7 @@ var score : int
 const SCORE_MODIFIER : int = 10
 var speed : float
 const START_SPEED : float = 10.0
-const MAX_SPEED : int = 25
+const MAX_SPEED : int = 15
 const SPEED_MODIFIER : int = 5000
 var screen_size : Vector2i
 var game_running : bool
@@ -58,6 +58,7 @@ func show_score():
 	$HUD.get_node("Score").text = "SCORE: " + str(score/SCORE_MODIFIER)
 
 func _on_game_over():
+	print("MAIN RECEIVED GAME OVER")
 	obstacle_manager.spawn_timer.stop()
 	get_tree().paused = true
 	# show a Game Over UI here with Score.current_score displayed,
