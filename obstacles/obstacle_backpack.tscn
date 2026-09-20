@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://h6iu4q2vwa6"]
 
 [ext_resource type="Script" uid="uid://boe84ua0ld6fn" path="res://obstacles/obstacle_backpack.gd" id="1_3qxoj"]
-[ext_resource type="Texture2D" uid="uid://dhg5fk4wbwinp" path="res://assets/img/obstacles/fire_PNG6042.png" id="2_henc1"]
+[ext_resource type="Texture2D" uid="uid://cfytmud0lsjnb" path="res://assets/img/obstacles/backpack1.png" id="2_g7kds"]
+[ext_resource type="Texture2D" uid="uid://bk53r301qpk1n" path="res://assets/img/obstacles/backpack2.png" id="3_3xuah"]
+[ext_resource type="Texture2D" uid="uid://d04pdqtyurrow" path="res://assets/img/obstacles/backpack3.png" id="4_lvdxu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wgkke"]
 size = Vector2(64, 64)
@@ -9,11 +11,11 @@ size = Vector2(64, 64)
 [node name="obstacle_backpack" type="Area2D" unique_id=1280962681]
 collision_layer = 2
 script = ExtResource("1_3qxoj")
+backpack_textures = Array[Texture2D]([ExtResource("2_g7kds"), ExtResource("3_3xuah"), ExtResource("4_lvdxu")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=462359202]
 shape = SubResource("RectangleShape2D_wgkke")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1892058143]
 position = Vector2(3, 1)
-scale = Vector2(0.037113003, 0.037711404)
-texture = ExtResource("2_henc1")
+scale = Vector2(0.974, 1)

@@ -10,14 +10,14 @@
 [ext_resource type="PackedScene" uid="uid://chigfk78xleb6" path="res://obstacles/obstacle_student.tscn" id="5_272bh"]
 [ext_resource type="Texture2D" uid="uid://ckk571rpxs4cf" path="res://assets/background/bg4.png" id="5_efxa6"]
 [ext_resource type="PackedScene" uid="uid://cmyubviqi8rnm" path="res://scenes/player_goose.tscn" id="7_5vw27"]
+[ext_resource type="Script" uid="uid://b2k7c056luh4s" path="res://hardware_interface.gd" id="12_dg77c"]
+[ext_resource type="FontFile" uid="uid://ctknd1ml7cy8g" path="res://assets/font/RussoOne-Regular.ttf" id="12_ycdy4"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4c57u"]
-size = Vector2(2880, 148)
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_n2731"]
+distance = 94.0
 
 [node name="Main" type="Node2D" unique_id=158365187]
 script = ExtResource("1_ig7tw")
-
-[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=1732786140]
 
 [node name="Timer" type="Timer" parent="." unique_id=808134426]
 
@@ -25,6 +25,8 @@ script = ExtResource("1_ig7tw")
 
 [node name="sky" type="Parallax2D" parent="Background" unique_id=313297852]
 scroll_scale = Vector2(0.1, 1)
+repeat_size = Vector2(2880, 0)
+autoscroll = Vector2(-20, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/sky" unique_id=196882979]
 position = Vector2(1440, 540)
@@ -32,6 +34,8 @@ texture = ExtResource("2_7mycd")
 
 [node name="far buildings" type="Parallax2D" parent="Background" unique_id=397077000]
 scroll_scale = Vector2(0.3, 1)
+repeat_size = Vector2(2880, 0)
+autoscroll = Vector2(-40, 0)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Background/far buildings" unique_id=1078009107]
 position = Vector2(1440, 540)
@@ -39,6 +43,8 @@ texture = ExtResource("3_kek77")
 
 [node name="near buildings" type="Parallax2D" parent="Background" unique_id=1240196064]
 scroll_scale = Vector2(0.5, 1)
+repeat_size = Vector2(2880, 0)
+autoscroll = Vector2(-100, 0)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Background/near buildings" unique_id=980504322]
 position = Vector2(1440, 540)
@@ -46,6 +52,8 @@ texture = ExtResource("4_4c57u")
 
 [node name="road" type="Parallax2D" parent="Background" unique_id=248066307]
 scroll_scale = Vector2(0.7, 1)
+repeat_size = Vector2(2880, 0)
+autoscroll = Vector2(-200, 0)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Background/road" unique_id=1350034937]
 position = Vector2(1440, 540)
@@ -55,7 +63,8 @@ texture = ExtResource("5_efxa6")
 position = Vector2(1440, 1006)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/ground" unique_id=4308673]
-shape = SubResource("RectangleShape2D_4c57u")
+position = Vector2(4, -21)
+shape = SubResource("WorldBoundaryShape2D_n2731")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1975547242]
 
@@ -77,3 +86,52 @@ position = Vector2(130, 838)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=817920241]
 position = Vector2(960, 540)
+
+[node name="HardwareInterface" type="Node" parent="." unique_id=1910357167]
+script = ExtResource("12_dg77c")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="HardwareInterface" unique_id=1732786140]
+
+[node name="UI instructions" type="Label" parent="." unique_id=1553685372]
+offset_left = 26.0
+offset_top = 18.0
+offset_right = 712.0
+offset_bottom = 195.0
+theme_override_colors/font_color = Color(0.1024, 0.13983999, 0.16, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("12_ycdy4")
+theme_override_font_sizes/font_size = 34
+text = "jump to avoid backpacks
+flap your wings to avoid the ion
+jab forward to attack stray students
+HONK! into your mic to disperse crowds"
+
+[node name="Score" type="Label" parent="UI instructions" unique_id=1257987911]
+layout_mode = 0
+offset_left = 1709.0
+offset_top = -1.0
+offset_right = 1870.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("12_ycdy4")
+theme_override_font_sizes/font_size = 60
+text = "0000"
+
+[node name="game over text" type="Label" parent="." unique_id=488270321]
+visible = false
+z_index = 2
+offset_left = 647.0
+offset_top = 488.0
+offset_right = 1369.0
+offset_bottom = 637.0
+theme_override_colors/font_color = Color(0.75, 0.13787502, 0.12750001, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("12_ycdy4")
+theme_override_font_sizes/font_size = 60
+text = "game over :(
+press enter to try again"
+horizontal_alignment = 1
