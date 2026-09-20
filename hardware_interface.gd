@@ -20,21 +20,6 @@ var is_waiting_for_network = false
 func _ready():
 	print("📡 HardwareInterface: Booting up Double-Jump Flight Core...")
 	http_request.request_completed.connect(_on_request_completed)
-<<<<<<< HEAD
-	
-	# --- DIAGNOSTIC TEST LOOP ---
-	# Connect script to global signals
-	SignalBus.goose_jumped.connect(_on_diagnostic_jump)
-	SignalBus.goose_ducked.connect(_on_diagnostic_duck)
-	SignalBus.goose_charged.connect(_on_diagnostic_charge)
-	
-	# Setup clean onscreen text properties
-	#debug_label.text = "STANDBY: Calibrating Gravity..."
-	#debug_label.add_theme_font_size_override("font_size", 32)
-	#
-	# Force the iPhone to start sensing automatically
-=======
->>>>>>> d23f2f1333b8f580d8f281c55d614723dca7a4bc
 	var start_check = http_request.request(START_URL)
 	if start_check == OK: print("✅ Sent remote START command.")
 

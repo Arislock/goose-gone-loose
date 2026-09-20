@@ -11,7 +11,6 @@ const MAX_SPEED : int = 25
 const SPEED_MODIFIER : int = 5000
 var screen_size : Vector2i
 var game_running : bool
-extends Node2D
 
 @onready var obstacle_manager = $ObstacleManager
 
