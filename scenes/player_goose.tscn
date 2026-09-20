@@ -117,7 +117,7 @@ animations = [{
 size = Vector2(109, 170.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6lhh2"]
-size = Vector2(108, 139)
+size = Vector2(108, 139.5)
 
 [node name="PlayerGoose" type="CharacterBody2D" unique_id=227304361]
 z_index = 1
@@ -125,6 +125,7 @@ script = ExtResource("1_sh6gi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=475421017]
 texture_filter = 1
+position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_7ankg")
 animation = &"flying"
 autoplay = "walking"
@@ -135,7 +136,7 @@ position = Vector2(-29, 8.875)
 shape = SubResource("RectangleShape2D_6d2e4")
 
 [node name="DuckCol" type="CollisionShape2D" parent="." unique_id=654207593]
-position = Vector2(-30, 24)
+position = Vector2(-30, 24.25)
 shape = SubResource("RectangleShape2D_6lhh2")
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="." unique_id=1327752144]
