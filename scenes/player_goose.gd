@@ -24,6 +24,7 @@ func _ready():
 	SignalBus.goose_jumped.connect(on_hardware_jump_input)
 	SignalBus.goose_charged.connect(on_charge)
 	attack_hitbox.monitoring = false  # off by default
+	attack_hitbox.monitorable = false
 
 func _physics_process(delta):
 	if not is_alive:
@@ -95,11 +96,13 @@ func on_charge():
 		return
 	is_attacking = true
 	sprite.play("attacking")
+	attack_hitbox.set_deferred("monitorable", true)
 	attack_hitbox.monitoring = true  # turn hitbox on during the attack
 
 func _on_animation_finished():
 	if sprite.animation == "attacking":
 		is_attacking = false
+		attack_hitbox.set_deferred("monitorable", false)
 		attack_hitbox.monitoring = false  # turn it back off once attack ends
 
 func on_hit_obstacle():

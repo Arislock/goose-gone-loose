@@ -3,16 +3,18 @@
 [ext_resource type="Script" uid="uid://kv4epmug75gi" path="res://obstacles/obstacle_ion.gd" id="1_58p18"]
 [ext_resource type="Texture2D" uid="uid://c6ierbvplcujm" path="res://assets/img/obstacles/ion.png" id="2_se7r7"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wgkke"]
-size = Vector2(343, 180)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_01t7r"]
+size = Vector2(620.17224, 250.93552)
 
 [node name="obstacle_ion" type="Area2D" unique_id=2054226960]
 collision_layer = 2
 script = ExtResource("1_58p18")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1001632340]
-position = Vector2(-139.5, 59)
-shape = SubResource("RectangleShape2D_wgkke")
+position = Vector2(-6.4241905, -1.3619776)
+rotation = -0.31066865
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("RectangleShape2D_01t7r")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1217261309]
 position = Vector2(3, 1)
