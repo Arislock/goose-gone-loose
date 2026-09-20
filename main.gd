@@ -14,14 +14,18 @@ var game_running : bool
 
 @onready var obstacle_manager = $ObstacleManager
 
+
+
 func _ready():
 	screen_size = get_window().size
 	SignalBus.game_over.connect(_on_game_over)
+	load_high_score()
 	new_game()
 
 func new_game():
 	score = 0
 	game_running = false
+	show_high_score()
 	
 	$PlayerGoose.position = GOOSE_START_POS
 	$PlayerGoose.velocity = Vector2i(0, 0)
@@ -62,6 +66,30 @@ func _on_game_over():
 	obstacle_manager.spawn_timer.stop()
 	$HUD.get_node("game over text").show()
 	
+	var final_score : int = score / SCORE_MODIFIER
+	if final_score > high_score:
+		high_score = final_score
+		save_high_score()
+		show_high_score()
+	
 	get_tree().paused = true
 	# show a Game Over UI here with Score.current_score displayed,
 	# and a restart button that calls get_tree().reload_current_scene()
+
+# HIGH SCORE
+
+const SAVE_PATH := "user://savegame.cfg"
+var high_score : int = 0
+
+func load_high_score():
+	var config := ConfigFile.new()
+	if config.load(SAVE_PATH) == OK:
+		high_score = config.get_value("scores", "high_score", 0)
+
+func save_high_score():
+	var config := ConfigFile.new()
+	config.set_value("scores", "high_score", high_score)
+	config.save(SAVE_PATH)
+
+func show_high_score():
+	$HUD.get_node("HighScore").text = "HIGH SCORE: " + str(high_score)
