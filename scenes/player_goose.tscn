@@ -2,9 +2,7 @@
 
 [ext_resource type="Script" uid="uid://34uxjwpa807a" path="res://scenes/player_goose.gd" id="1_sh6gi"]
 [ext_resource type="Texture2D" uid="uid://cmj88ixjw55pn" path="res://assets/img/animations/jumping_animation/frame0001.png" id="2_bigf0"]
-[ext_resource type="Texture2D" uid="uid://bmqalc3wiru4m" path="res://assets/img/animations/flying_animation/frame0001.png" id="2_fg1ig"]
 [ext_resource type="Texture2D" uid="uid://cnw6i7gxvfftb" path="res://assets/img/animations/attacking_animation/frame0001.png" id="2_qg3co"]
-[ext_resource type="Texture2D" uid="uid://xehgn3w4vtdq" path="res://assets/img/animations/flying_animation/frame0002.png" id="3_5ckam"]
 [ext_resource type="Texture2D" uid="uid://dvpsvlahs2oht" path="res://assets/img/animations/attacking_animation/frame0002.png" id="3_012x7"]
 [ext_resource type="Texture2D" uid="uid://dxr4k5x5udecv" path="res://assets/img/animations/jumping_animation/frame0002.png" id="3_ivk0p"]
 [ext_resource type="Texture2D" uid="uid://bjih3umaxkdbn" path="res://assets/img/animations/flying_animation/frame0003.png" id="4_kb304"]
@@ -17,12 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://vgrqalm12cnr" path="res://assets/img/animations/jumping_animation/frame0007.png" id="6_gkr3t"]
 [ext_resource type="Texture2D" uid="uid://cuyte82b3loap" path="res://assets/img/animations/attacking_animation/frame0005.png" id="6_k2o2n"]
 [ext_resource type="Texture2D" uid="uid://cc74kinavuelb" path="res://assets/img/animations/jumping_animation/frame0008.png" id="7_1wk6e"]
-[ext_resource type="Texture2D" uid="uid://dffrnp45qo6lv" path="res://assets/img/animations/flying_animation/frame0008.png" id="7_7b3b0"]
 [ext_resource type="Texture2D" uid="uid://c7tdw1b684bd7" path="res://assets/img/animations/attacking_animation/frame0006.png" id="7_co8xq"]
-[ext_resource type="Texture2D" uid="uid://dkah1trbs0bm7" path="res://assets/img/animations/flying_animation/frame0009.png" id="8_01t7r"]
 [ext_resource type="Texture2D" uid="uid://colayiai26aud" path="res://assets/img/animations/attacking_animation/frame0007.png" id="8_ikhru"]
 [ext_resource type="Texture2D" uid="uid://co7whga5jlowh" path="res://assets/img/animations/jumping_animation/frame0009.png" id="8_qgbey"]
-[ext_resource type="Texture2D" uid="uid://bg0ohj6asbqaj" path="res://assets/img/animations/flying_animation/frame0010.png" id="9_aqag0"]
 [ext_resource type="Texture2D" uid="uid://dda2ps3to81qj" path="res://assets/img/animations/attacking_animation/frame0008.png" id="9_authy"]
 [ext_resource type="Texture2D" uid="uid://dqhxxcrvx1fmu" path="res://assets/img/animations/walking_animation/frame0001.png" id="9_fxwmb"]
 [ext_resource type="Texture2D" uid="uid://cxtkirtbpkke8" path="res://assets/img/goose dead.png" id="10_012x7"]
@@ -76,12 +71,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_fg1ig")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_5ckam")
-}, {
-"duration": 1.0,
 "texture": ExtResource("4_kb304")
 }, {
 "duration": 1.0,
@@ -119,18 +108,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("6_5gt5u")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_7b3b0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_01t7r")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_aqag0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_5ckam")
 }],
 "loop": 1,
 "name": &"flying",
@@ -206,7 +183,7 @@ script = ExtResource("1_sh6gi")
 texture_filter = 1
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_7ankg")
-animation = &"walking"
+animation = &"flying"
 autoplay = "walking"
 
 [node name="RunCol" type="CollisionShape2D" parent="." unique_id=1828616774]

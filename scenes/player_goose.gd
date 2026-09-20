@@ -71,7 +71,7 @@ func on_hardware_jump_input(is_shake: bool):
 		air_action_state = "jumped"
 		velocity.y = JUMP_SPEED
 		jump_sound.play()
-		sprite.play("jumping")
+		#sprite.play("jumping")
 		return
 
 	# 🦅 BRANCH 2: AIRBORNE FIXED-TIME FLIGHT
@@ -86,7 +86,7 @@ func on_hardware_jump_input(is_shake: bool):
 		flight_timer = FLY_DURATION
 		velocity.y = FLY_SPEED
 		jump_sound.play()
-		sprite.play("flying") # 🎬 Triggers the flight animation instantly!
+		#sprite.play("flying") # 🎬 Triggers the flight animation instantly!
 		return
 
 
