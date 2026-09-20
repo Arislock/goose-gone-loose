@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bemruila1qwi0" path="res://obstacles/obstacle_student_attack.tscn" id="9_dg77c"]
 [ext_resource type="Script" uid="uid://b2k7c056luh4s" path="res://hardware_interface.gd" id="12_dg77c"]
 [ext_resource type="FontFile" uid="uid://ctknd1ml7cy8g" path="res://assets/font/RussoOne-Regular.ttf" id="12_ycdy4"]
+[ext_resource type="Script" uid="uid://y2l4jbaocumc" path="res://restart.gd" id="13_ycdy4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dg77c"]
 size = Vector2(5760, 153)
@@ -116,15 +117,29 @@ offset_left = 51.0
 offset_top = 50.0
 offset_right = 744.0
 offset_bottom = 215.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 9
 theme_override_fonts/font = ExtResource("12_ycdy4")
 theme_override_font_sizes/font_size = 32
 text = "Jump to avoid backpacks
 Flap your wings to avoid the ion
-Jab forward to attack stray students
-HONK! into your mic to disperse crowds"
+Jab forward to attack stray students"
+
+[node name="game over text" type="Label" parent="HUD" unique_id=488270321]
+z_index = 2
+offset_left = 621.0
+offset_top = 485.0
+offset_right = 1357.0
+offset_bottom = 634.0
+theme_override_colors/font_color = Color(0.75, 0.13787502, 0.12750001, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("12_ycdy4")
+theme_override_font_sizes/font_size = 60
+text = "game over :(
+press space to try again"
+horizontal_alignment = 1
 
 [node name="ObstacleManager" type="Node2D" parent="." unique_id=1674728517]
 script = ExtResource("2_0xm2m")
@@ -147,18 +162,6 @@ script = ExtResource("12_dg77c")
 
 [node name="HTTPRequest" type="HTTPRequest" parent="HardwareInterface" unique_id=1732786140]
 
-[node name="game over text" type="Label" parent="." unique_id=488270321]
-visible = false
-z_index = 2
-offset_left = 647.0
-offset_top = 488.0
-offset_right = 1369.0
-offset_bottom = 637.0
-theme_override_colors/font_color = Color(0.75, 0.13787502, 0.12750001, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("12_ycdy4")
-theme_override_font_sizes/font_size = 60
-text = "game over :(
-press enter to try again"
-horizontal_alignment = 1
+[node name="Restart" type="Node" parent="." unique_id=186348436]
+process_mode = 3
+script = ExtResource("13_ycdy4")

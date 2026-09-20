@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://bg0ohj6asbqaj" path="res://assets/img/animations/flying_animation/frame0010.png" id="9_aqag0"]
 [ext_resource type="Texture2D" uid="uid://dda2ps3to81qj" path="res://assets/img/animations/attacking_animation/frame0008.png" id="9_authy"]
 [ext_resource type="Texture2D" uid="uid://dqhxxcrvx1fmu" path="res://assets/img/animations/walking_animation/frame0001.png" id="9_fxwmb"]
+[ext_resource type="Texture2D" uid="uid://cxtkirtbpkke8" path="res://assets/img/goose dead.png" id="10_012x7"]
 [ext_resource type="Texture2D" uid="uid://euqa20c2r3s0" path="res://assets/img/animations/walking_animation/frame0002.png" id="10_ooh2d"]
 [ext_resource type="Texture2D" uid="uid://crnj06ehgu2cp" path="res://assets/img/animations/walking_animation/frame0003.png" id="11_06oi4"]
 [ext_resource type="Texture2D" uid="uid://csvc0clnvv6bk" path="res://assets/img/animations/walking_animation/frame0004.png" id="12_vgiof"]
@@ -63,6 +64,14 @@ animations = [{
 }],
 "loop": 0,
 "name": &"attacking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_012x7")
+}],
+"loop": 1,
+"name": &"dead",
 "speed": 5.0
 }, {
 "frames": [{
@@ -194,7 +203,7 @@ script = ExtResource("1_sh6gi")
 texture_filter = 1
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_7ankg")
-animation = &"jumping"
+animation = &"dead"
 autoplay = "walking"
 
 [node name="RunCol" type="CollisionShape2D" parent="." unique_id=1828616774]
