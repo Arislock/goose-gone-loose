@@ -7,14 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://h6iu4q2vwa6" path="res://obstacles/obstacle_backpack.tscn" id="3_lquwl"]
 [ext_resource type="Texture2D" uid="uid://dltmv8pi2umwn" path="res://assets/background/bg3.png" id="4_4c57u"]
 [ext_resource type="PackedScene" uid="uid://b1i3mb7nfi0rn" path="res://obstacles/obstacle_ion.tscn" id="4_7mycd"]
-[ext_resource type="PackedScene" uid="uid://chigfk78xleb6" path="res://obstacles/obstacle_student.tscn" id="5_272bh"]
 [ext_resource type="Texture2D" uid="uid://ckk571rpxs4cf" path="res://assets/background/bg4.png" id="5_efxa6"]
 [ext_resource type="PackedScene" uid="uid://cmyubviqi8rnm" path="res://scenes/player_goose.tscn" id="7_5vw27"]
+[ext_resource type="PackedScene" uid="uid://bemruila1qwi0" path="res://obstacles/obstacle_student_attack.tscn" id="9_dg77c"]
 [ext_resource type="Script" uid="uid://b2k7c056luh4s" path="res://hardware_interface.gd" id="12_dg77c"]
 [ext_resource type="FontFile" uid="uid://ctknd1ml7cy8g" path="res://assets/font/RussoOne-Regular.ttf" id="12_ycdy4"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_n2731"]
-distance = 94.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dg77c"]
+size = Vector2(5760, 153)
 
 [node name="Main" type="Node2D" unique_id=158365187]
 script = ExtResource("1_ig7tw")
@@ -59,26 +59,80 @@ autoscroll = Vector2(-200, 0)
 position = Vector2(1440, 540)
 texture = ExtResource("5_efxa6")
 
-[node name="ground" type="StaticBody2D" parent="Background" unique_id=1045425888]
+[node name="Ground" type="StaticBody2D" parent="." unique_id=1045425888]
 position = Vector2(1440, 1006)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/ground" unique_id=4308673]
-position = Vector2(4, -21)
-shape = SubResource("WorldBoundaryShape2D_n2731")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=4308673]
+position = Vector2(1440, -2.5)
+shape = SubResource("RectangleShape2D_dg77c")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1975547242]
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1975547242]
 
-[node name="Label" type="Label" parent="CanvasLayer" unique_id=708438062]
-offset_right = 40.0
-offset_bottom = 23.0
-metadata/_edit_use_anchors_ = true
+[node name="Score" type="Label" parent="HUD" unique_id=1257987911]
+offset_left = 1508.0
+offset_top = 41.0
+offset_right = 1862.0
+offset_bottom = 114.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("12_ycdy4")
+theme_override_font_sizes/font_size = 60
+text = "SCORE: XXX"
+
+[node name="High Score" type="Label" parent="HUD" unique_id=1386189300]
+offset_left = 1339.0
+offset_top = 121.0
+offset_right = 1866.0
+offset_bottom = 194.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("12_ycdy4")
+theme_override_font_sizes/font_size = 60
+text = "HIGH SCORE: XXX"
+
+[node name="Start" type="Label" parent="HUD" unique_id=744224613]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -346.5
+offset_top = -36.5
+offset_right = 346.5
+offset_bottom = 36.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("12_ycdy4")
+theme_override_font_sizes/font_size = 60
+text = "PRESS SPACE TO PLAY"
+
+[node name="Instructions" type="Label" parent="HUD" unique_id=1775776585]
+offset_left = 51.0
+offset_top = 50.0
+offset_right = 744.0
+offset_bottom = 215.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("12_ycdy4")
+theme_override_font_sizes/font_size = 32
+text = "Jump to avoid backpacks
+Flap your wings to avoid the ion
+Jab forward to attack stray students
+HONK! into your mic to disperse crowds"
 
 [node name="ObstacleManager" type="Node2D" parent="." unique_id=1674728517]
 script = ExtResource("2_0xm2m")
-obstacle_scenes = Array[PackedScene]([ExtResource("3_lquwl"), ExtResource("4_7mycd"), ExtResource("5_272bh")])
+obstacle_scenes = Array[PackedScene]([ExtResource("3_lquwl"), ExtResource("4_7mycd"), ExtResource("9_dg77c")])
+obstacle_ion = ExtResource("4_7mycd")
+obstacle_student = ExtResource("9_dg77c")
 
 [node name="SpawnTimer" type="Timer" parent="ObstacleManager" unique_id=272148650]
-wait_time = 1.5
 autostart = true
 
 [node name="PlayerGoose" parent="." unique_id=227304361 instance=ExtResource("7_5vw27")]
@@ -91,34 +145,6 @@ position = Vector2(960, 540)
 script = ExtResource("12_dg77c")
 
 [node name="HTTPRequest" type="HTTPRequest" parent="HardwareInterface" unique_id=1732786140]
-
-[node name="UI instructions" type="Label" parent="." unique_id=1553685372]
-offset_left = 26.0
-offset_top = 18.0
-offset_right = 712.0
-offset_bottom = 195.0
-theme_override_colors/font_color = Color(0.1024, 0.13983999, 0.16, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 0
-theme_override_fonts/font = ExtResource("12_ycdy4")
-theme_override_font_sizes/font_size = 34
-text = "jump to avoid backpacks
-flap your wings to avoid the ion
-jab forward to attack stray students
-HONK! into your mic to disperse crowds"
-
-[node name="Score" type="Label" parent="UI instructions" unique_id=1257987911]
-layout_mode = 0
-offset_left = 1709.0
-offset_top = -1.0
-offset_right = 1870.0
-offset_bottom = 72.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 9
-theme_override_fonts/font = ExtResource("12_ycdy4")
-theme_override_font_sizes/font_size = 60
-text = "0000"
 
 [node name="game over text" type="Label" parent="." unique_id=488270321]
 visible = false
