@@ -1,8 +1,8 @@
 extends Node2D
 
 @export var obstacle_scenes: Array[PackedScene] = []
-@export var spawn_x_position: float = 1300.0
-@export var spawn_y_position: float = 500.0  # adjust to your ground height
+@export var spawn_x_position: float = 2000.0
+@export var spawn_y_position: float = 800.0  # adjust to your ground height
 
 @onready var spawn_timer = $SpawnTimer
 

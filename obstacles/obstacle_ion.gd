@@ -2,6 +2,7 @@ extends Area2D
 
 @export var speed: float = 300.0
 
+
 func _ready():
 	body_entered.connect(_on_body_entered)
 

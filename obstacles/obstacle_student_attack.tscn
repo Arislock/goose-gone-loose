@@ -1,15 +1,18 @@
 [gd_scene format=3 uid="uid://bemruila1qwi0"]
 
 [ext_resource type="Script" uid="uid://d0l8gp2jyilv" path="res://obstacles/obstacle_student_attack.gd" id="1_tj0dt"]
+[ext_resource type="Texture2D" uid="uid://bsm0qost0p176" path="res://assets/img/obstacles/student1.png" id="2_jsbin"]
+[ext_resource type="Texture2D" uid="uid://835jw563u0rv" path="res://assets/img/obstacles/student2.png" id="3_gnnxg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wgkke"]
 size = Vector2(64, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qk25g"]
 
-[node name="ObstacleStudent" type="Area2D" unique_id=949342224]
+[node name="ObstacleStudentAttack" type="Area2D" unique_id=949342224]
 collision_layer = 2
 script = ExtResource("1_tj0dt")
+student_textures = Array[Texture2D]([ExtResource("2_jsbin"), ExtResource("3_gnnxg")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1350919211]
 shape = SubResource("RectangleShape2D_wgkke")
@@ -20,3 +23,5 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=717399599]
 shape = SubResource("RectangleShape2D_qk25g")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=118269429]
