@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://b1i3mb7nfi0rn" path="res://obstacles/obstacle_ion.tscn" id="4_7mycd"]
 [ext_resource type="Texture2D" uid="uid://ckk571rpxs4cf" path="res://assets/background/bg4.png" id="5_efxa6"]
 [ext_resource type="PackedScene" uid="uid://cmyubviqi8rnm" path="res://scenes/player_goose.tscn" id="7_5vw27"]
+[ext_resource type="Texture2D" uid="uid://pxfkq8d0dmj6" path="res://assets/img/goose tutorial.png" id="7_vivmo"]
+[ext_resource type="Texture2D" uid="uid://cspyktkqifvbg" path="res://assets/img/logo.png" id="8_2cqfq"]
 [ext_resource type="PackedScene" uid="uid://bemruila1qwi0" path="res://obstacles/obstacle_student_attack.tscn" id="9_dg77c"]
 [ext_resource type="Script" uid="uid://b2k7c056luh4s" path="res://hardware_interface.gd" id="12_dg77c"]
 [ext_resource type="FontFile" uid="uid://ctknd1ml7cy8g" path="res://assets/font/RussoOne-Regular.ttf" id="12_ycdy4"]
@@ -99,9 +101,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -346.5
-offset_top = -36.5
+offset_top = 293.0
 offset_right = 346.5
-offset_bottom = 36.5
+offset_bottom = 366.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -111,7 +113,17 @@ theme_override_fonts/font = ExtResource("12_ycdy4")
 theme_override_font_sizes/font_size = 60
 text = "PRESS SPACE TO PLAY"
 
+[node name="StartScreen" type="Sprite2D" parent="HUD" unique_id=498076853]
+position = Vector2(960, 586)
+texture = ExtResource("7_vivmo")
+
+[node name="Logo" type="Sprite2D" parent="HUD/StartScreen" unique_id=685719136]
+position = Vector2(-180, -339)
+scale = Vector2(0.81805545, 0.8180555)
+texture = ExtResource("8_2cqfq")
+
 [node name="Instructions" type="Label" parent="HUD" unique_id=1775776585]
+visible = false
 offset_left = 51.0
 offset_top = 35.0
 offset_right = 744.0
