@@ -13,7 +13,7 @@ var screen_size : Vector2i
 var game_running : bool
 
 @onready var obstacle_manager = $ObstacleManager
-
+@onready var ground = $Background/road
 
 
 func _ready():
@@ -37,6 +37,7 @@ func new_game():
 
 func _process(delta): 
 	if game_running:
+		ground.autoscroll = Vector2.ZERO
 		speed = START_SPEED + float(score) / SPEED_MODIFIER
 		if speed > MAX_SPEED:
 			speed = MAX_SPEED

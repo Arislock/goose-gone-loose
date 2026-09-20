@@ -27,34 +27,33 @@ script = ExtResource("1_ig7tw")
 [node name="sky" type="Parallax2D" parent="Background" unique_id=313297852]
 scroll_scale = Vector2(0.1, 1)
 repeat_size = Vector2(2880, 0)
-autoscroll = Vector2(-20, 0)
+autoscroll = Vector2(-5, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/sky" unique_id=196882979]
 position = Vector2(1440, 540)
 texture = ExtResource("2_7mycd")
 
 [node name="far buildings" type="Parallax2D" parent="Background" unique_id=397077000]
-scroll_scale = Vector2(0.3, 1)
+scroll_scale = Vector2(0.4, 1)
 repeat_size = Vector2(2880, 0)
-autoscroll = Vector2(-40, 0)
+autoscroll = Vector2(-10, 0)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Background/far buildings" unique_id=1078009107]
 position = Vector2(1440, 540)
 texture = ExtResource("3_kek77")
 
 [node name="near buildings" type="Parallax2D" parent="Background" unique_id=1240196064]
-scroll_scale = Vector2(0.5, 1)
+scroll_scale = Vector2(0.7, 1)
 repeat_size = Vector2(2880, 0)
-autoscroll = Vector2(-100, 0)
+autoscroll = Vector2(-20, 0)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Background/near buildings" unique_id=980504322]
 position = Vector2(1440, 540)
 texture = ExtResource("4_4c57u")
 
 [node name="road" type="Parallax2D" parent="Background" unique_id=248066307]
-scroll_scale = Vector2(0.7, 1)
 repeat_size = Vector2(2880, 0)
-autoscroll = Vector2(-200, 0)
+autoscroll = Vector2(-35, 0)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Background/road" unique_id=1350034937]
 position = Vector2(1440, 540)
@@ -71,9 +70,9 @@ shape = SubResource("RectangleShape2D_dg77c")
 
 [node name="Score" type="Label" parent="HUD" unique_id=1257987911]
 offset_left = 1508.0
-offset_top = 41.0
+offset_top = 35.0
 offset_right = 1862.0
-offset_bottom = 114.0
+offset_bottom = 108.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 9
@@ -83,9 +82,9 @@ text = "SCORE: XXX"
 
 [node name="HighScore" type="Label" parent="HUD" unique_id=1386189300]
 offset_left = 1339.0
-offset_top = 121.0
+offset_top = 112.0
 offset_right = 1866.0
-offset_bottom = 194.0
+offset_bottom = 185.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 9
@@ -114,9 +113,9 @@ text = "PRESS SPACE TO PLAY"
 
 [node name="Instructions" type="Label" parent="HUD" unique_id=1775776585]
 offset_left = 51.0
-offset_top = 50.0
+offset_top = 35.0
 offset_right = 744.0
-offset_bottom = 215.0
+offset_bottom = 200.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 9

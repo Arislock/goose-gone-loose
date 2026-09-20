@@ -108,7 +108,7 @@ func on_hit_obstacle():
 		print("already dead, skipping")
 		return
 	is_alive = false
-	sprite.play("jumping")
+	sprite.play("dead")
 	SignalBus.game_over.emit()
 	print("game_over emitted")
 	
