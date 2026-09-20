@@ -7,7 +7,7 @@ const PHONE_IP = "10.36.83.62"
 const DATA_URL = "http://" + PHONE_IP + "/get?accX&accY&accZ"
 const START_URL = "http://" + PHONE_IP + "/control?cmd=start"
 
-# 🎯 SNAPPY EMPIRICAL PROCESSING THRESHOLDS
+# thresholds
 const JUMP_FORCE_LIMIT = 8.0    
 const CHARGE_FORCE_LIMIT = 15.0  
 
@@ -18,7 +18,7 @@ const MAX_BASELINE_SAMPLES = 10
 var is_waiting_for_network = false
 
 func _ready():
-	print("📡 HardwareInterface: Booting up Double-Jump Flight Core...")
+	print("Initializing hardware interface")
 	http_request.request_completed.connect(_on_request_completed)
 	var start_check = http_request.request(START_URL)
 	if start_check == OK: print("✅ Sent remote START command.")
@@ -61,39 +61,35 @@ func _on_request_completed(result, response_code, headers, body):
 		
 	evaluate_physics_triggers(raw_x, raw_y, (raw_z - gravity_baseline_z))
 
-
-
 func evaluate_physics_triggers(x: float, y: float, z: float):
 	print("RAW VALUES (x: %.2f)(y: %.2f)(z: %.2f)" % [x, y, z])
 
 	var abs_y = abs(y)
 	var abs_z = abs(z)
 	
-	# 📈 CALCULATE FORCE MAGNITUDE (Your exact vector formula)
+	# force magnitude
 	var total_force = sqrt(x*x + y*y + z*z)
 	
 	if global_cooldown > 0.0: return
 	if total_force < 5.0: return
 
-	# 🏎️ 1. CHARGE DASH (Y-Axis dominance)
+	# Slap attack action (accel in +ve y dir)
 	if abs_y > CHARGE_FORCE_LIMIT and abs_y > (abs_z * 1.4):
 		print("💥 SIGNAL: CHARGE DASH")
 		global_cooldown = 0.4
 		SignalBus.goose_charged.emit()
 		return
 
-	# 🦘 2. JUMP THRESHOLD EVALUATED FIRST (Prevents jumps from being stolen by flight)
-	# Triggers when you do a clean, focused vertical pop upward
+	# Jump action (accel in +ve x dir). 
 	if z > JUMP_FORCE_LIMIT and abs_z > abs_y and total_force < 22.0:
 		print("💥 GESTURE: PURE UPWARD POP -> JUMP (Force: %.2f)" % z)
-		global_cooldown = 0.35 # Slop time lockout window
-		SignalBus.goose_jumped.emit(false) # Emit FALSE (Not a shake)
+		global_cooldown = 0.35 
+		SignalBus.goose_jumped.emit(false) # false = no shake
 		return
 
-	# 🦅 3. EXPLOSIVE SHAKE THRESHOLD (Raised to prevent accidental triggers)
-	# If the total 3D vector magnitude explodes past 22.0, they are definitely shaking the device!
+	# Double jump (flight) action (shake up and down in x dir)
 	if total_force > 22.0:
 		print("💥 GESTURE: TRUE SHAKE FORCE -> FLIGHT (Magnitude: %.2f)" % total_force)
-		global_cooldown = 0.40 # Solid cooldown ensures exactly ONE trigger registers the flight state
-		SignalBus.goose_jumped.emit(true) # Emit TRUE (Is a shake)
+		global_cooldown = 0.40 
+		SignalBus.goose_jumped.emit(true) # 
 		return
