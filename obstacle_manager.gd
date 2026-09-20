@@ -4,7 +4,8 @@ extends Node2D
 @export var obstacle_ion: PackedScene
 @export var obstacle_student: PackedScene
 @export var spawn_x_position: float = 2000.0
-@export var spawn_y_position: float = 800.0
+@export var ground_spawn_y: float = 800.0       # backpack, ion — ground level
+@export var high_spawn_y: float = 700.0          # student — elevated, can't jump over
 @export var base_obstacle_speed: float = 300.0
 @export var desired_gap_pixels: float = 350.0
 @export var min_spawn_interval: float = 0.3
@@ -33,7 +34,12 @@ func _on_spawn_timer_timeout():
 	var camera_x = get_tree().current_scene.get_node("Camera2D").position.x
 	var scene = _pick_next_obstacle()
 	var obstacle = scene.instantiate()
-	obstacle.global_position = Vector2(camera_x + spawn_x_position, spawn_y_position)
+
+	var spawn_y = ground_spawn_y
+	if scene == obstacle_student:
+		spawn_y = high_spawn_y
+
+	obstacle.global_position = Vector2(camera_x + spawn_x_position, spawn_y)
 	if "speed" in obstacle:
 		obstacle.speed = base_obstacle_speed * spawn_speed_multiplier
 	get_tree().current_scene.add_child(obstacle)
@@ -55,11 +61,3 @@ func _pick_next_obstacle() -> PackedScene:
 	if pool.is_empty():
 		pool = obstacle_scenes.duplicate()
 	return pool[randi() % pool.size()]
-	
-func _on_body_entered(body):
-	print("Collision detected with: ", body.name)
-	print("Is in player group: ", body.is_in_group("player"))
-	if body.is_in_group("player"):
-		print("about to call on_hit_obstacle")
-		body.on_hit_obstacle()
-		queue_free()
