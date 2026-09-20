@@ -29,6 +29,7 @@ func new_game():
 	$Ground.position = Vector2i(1440.0,1006)
 	
 	$HUD.get_node("Start").show()
+	$HUD.get_node("game over text").hide()
 
 func _process(delta): 
 	if game_running:
@@ -42,7 +43,6 @@ func _process(delta):
 		score += speed * 60 * delta
 		
 		# Update score
-		score += speed
 		show_score()
 		
 		# Update ground position
@@ -60,6 +60,8 @@ func show_score():
 func _on_game_over():
 	print("MAIN RECEIVED GAME OVER")
 	obstacle_manager.spawn_timer.stop()
+	$HUD.get_node("game over text").show()
+	
 	get_tree().paused = true
 	# show a Game Over UI here with Score.current_score displayed,
 	# and a restart button that calls get_tree().reload_current_scene()
