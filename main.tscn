@@ -12,8 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://cmyubviqi8rnm" path="res://scenes/player_goose.tscn" id="7_5vw27"]
 [ext_resource type="Script" uid="uid://b2k7c056luh4s" path="res://hardware_interface.gd" id="12_dg77c"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4c57u"]
-size = Vector2(2880, 148)
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_n2731"]
+distance = 94.0
 
 [node name="Main" type="Node2D" unique_id=158365187]
 script = ExtResource("1_ig7tw")
@@ -24,6 +24,8 @@ script = ExtResource("1_ig7tw")
 
 [node name="sky" type="Parallax2D" parent="Background" unique_id=313297852]
 scroll_scale = Vector2(0.1, 1)
+repeat_size = Vector2(2880, 0)
+autoscroll = Vector2(-20, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/sky" unique_id=196882979]
 position = Vector2(1440, 540)
@@ -31,6 +33,8 @@ texture = ExtResource("2_7mycd")
 
 [node name="far buildings" type="Parallax2D" parent="Background" unique_id=397077000]
 scroll_scale = Vector2(0.3, 1)
+repeat_size = Vector2(2880, 0)
+autoscroll = Vector2(-40, 0)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Background/far buildings" unique_id=1078009107]
 position = Vector2(1440, 540)
@@ -38,6 +42,8 @@ texture = ExtResource("3_kek77")
 
 [node name="near buildings" type="Parallax2D" parent="Background" unique_id=1240196064]
 scroll_scale = Vector2(0.5, 1)
+repeat_size = Vector2(2880, 0)
+autoscroll = Vector2(-100, 0)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Background/near buildings" unique_id=980504322]
 position = Vector2(1440, 540)
@@ -45,6 +51,8 @@ texture = ExtResource("4_4c57u")
 
 [node name="road" type="Parallax2D" parent="Background" unique_id=248066307]
 scroll_scale = Vector2(0.7, 1)
+repeat_size = Vector2(2880, 0)
+autoscroll = Vector2(-200, 0)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Background/road" unique_id=1350034937]
 position = Vector2(1440, 540)
@@ -54,7 +62,8 @@ texture = ExtResource("5_efxa6")
 position = Vector2(1440, 1006)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/ground" unique_id=4308673]
-shape = SubResource("RectangleShape2D_4c57u")
+position = Vector2(4, -21)
+shape = SubResource("WorldBoundaryShape2D_n2731")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1975547242]
 
