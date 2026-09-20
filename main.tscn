@@ -81,7 +81,7 @@ theme_override_fonts/font = ExtResource("12_ycdy4")
 theme_override_font_sizes/font_size = 60
 text = "SCORE: XXX"
 
-[node name="High Score" type="Label" parent="HUD" unique_id=1386189300]
+[node name="HighScore" type="Label" parent="HUD" unique_id=1386189300]
 offset_left = 1339.0
 offset_top = 121.0
 offset_right = 1866.0
