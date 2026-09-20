@@ -11,11 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://ckk571rpxs4cf" path="res://assets/background/bg4.png" id="5_efxa6"]
 [ext_resource type="PackedScene" uid="uid://cdqgvy0nw8t48" path="res://ground.tscn" id="6_272bh"]
 [ext_resource type="PackedScene" uid="uid://cmyubviqi8rnm" path="res://scenes/player_goose.tscn" id="7_5vw27"]
+[ext_resource type="Script" uid="uid://b2k7c056luh4s" path="res://hardware_interface.gd" id="12_dg77c"]
 
 [node name="Main" type="Node2D" unique_id=158365187]
 script = ExtResource("1_ig7tw")
-
-[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=1732786140]
 
 [node name="Timer" type="Timer" parent="." unique_id=808134426]
 
@@ -75,3 +74,8 @@ position = Vector2(94, 459)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=817920241]
 position = Vector2(576, 324)
+
+[node name="HardwareInterface" type="Node" parent="." unique_id=1910357167]
+script = ExtResource("12_dg77c")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="HardwareInterface" unique_id=1732786140]

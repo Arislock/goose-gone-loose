@@ -4,7 +4,8 @@ const GRAVITY : int = 4200
 const JUMP_SPEED : int = -1700
 
 func _ready():
-	SignalBus.goose_jumped.connect(on_jump)
+	if SignalBus.has_signal("goose_jumped"):
+		SignalBus.goose_jumped.connect(on_jump)
 
 
 func _physics_process(delta):
