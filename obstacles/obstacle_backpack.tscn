@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://h6iu4q2vwa6"]
 
 [ext_resource type="Script" uid="uid://boe84ua0ld6fn" path="res://obstacles/obstacle_backpack.gd" id="1_3qxoj"]
+[ext_resource type="Texture2D" uid="uid://dhg5fk4wbwinp" path="res://assets/img/obstacles/fire_PNG6042.png" id="2_henc1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wgkke"]
 size = Vector2(64, 64)
@@ -11,3 +12,8 @@ script = ExtResource("1_3qxoj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=462359202]
 shape = SubResource("RectangleShape2D_wgkke")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1892058143]
+position = Vector2(3, 1)
+scale = Vector2(0.037113003, 0.037711404)
+texture = ExtResource("2_henc1")

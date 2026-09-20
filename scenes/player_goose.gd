@@ -3,12 +3,17 @@ extends CharacterBody2D
 const GRAVITY : int = 4200
 const JUMP_SPEED : int = -1700
 
+func _ready():
+	if is_instance_valid(SignalBus):
+		if SignalBus.has_signal("goose_jumped"):
+			SignalBus.goose_jumped.connect(on_jump)
+
+
 func _physics_process(delta):
 	velocity.y += GRAVITY * delta
 	if is_on_floor():
 		if Input.is_action_pressed("ui_accept"):
-			velocity.y = JUMP_SPEED
-			$JumpSound.play()
+			trigger_jump()
 		elif Input.is_action_pressed("ui_down"):
 			#replace with duck an imation
 			$AnimatedSprite2D.play("jumping")
@@ -18,3 +23,12 @@ func _physics_process(delta):
 		$AnimatedSprite2D.play("jumping")
 		
 	move_and_slide()
+
+func trigger_jump():
+	velocity.y = JUMP_SPEED
+	$JumpSound.play()
+	$AnimatedSprite2D.play("jumping")
+
+func on_jump():
+	print("SPRITE SCRIPT JUMP")
+	trigger_jump()
