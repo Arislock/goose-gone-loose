@@ -4,6 +4,5 @@ extends Node
 signal goose_jumped
 signal goose_ducked
 signal goose_charged
-signal game_over
-signal obstacle_passed
-signal score_updated(new_score: int)
+signal goose_started_flying
+signal goose_stopped_flying
