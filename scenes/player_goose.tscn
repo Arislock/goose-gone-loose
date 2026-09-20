@@ -206,7 +206,7 @@ script = ExtResource("1_sh6gi")
 texture_filter = 1
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_7ankg")
-animation = &"dead"
+animation = &"walking"
 autoplay = "walking"
 
 [node name="RunCol" type="CollisionShape2D" parent="." unique_id=1828616774]
