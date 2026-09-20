@@ -1,15 +1,21 @@
 extends Area2D
 
 @export var speed: float = 300.0
+@export var student_textures: Array[Texture2D] = []
 signal defeated
+
+@onready var sprite = $Sprite2D
 
 func _ready():
 	body_entered.connect(_on_body_entered)
 	$AttackZone.area_entered.connect(_on_attacked)
+	if student_textures.size() > 0:
+		sprite.texture = student_textures[randi() % student_textures.size()]
 
 func _process(delta):
 	position.x -= speed * delta
 	if global_position.x < -200:
+		SignalBus.obstacle_passed.emit()
 		queue_free()
 
 func _on_body_entered(body):
