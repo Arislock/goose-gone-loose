@@ -33,9 +33,9 @@ func _ready():
 	SignalBus.goose_charged.connect(_on_diagnostic_charge)
 	
 	# Setup clean onscreen text properties
-	debug_label.text = "STANDBY: Calibrating Gravity..."
-	debug_label.add_theme_font_size_override("font_size", 32)
-	
+	#debug_label.text = "STANDBY: Calibrating Gravity..."
+	#debug_label.add_theme_font_size_override("font_size", 32)
+	#
 	# Force the iPhone to start sensing automatically
 	var start_check = http_request.request(START_URL)
 	if start_check == OK:

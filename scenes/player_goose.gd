@@ -25,15 +25,19 @@ func _physics_process(delta):
 		velocity.y += GRAVITY * delta
 	
 	if is_on_floor():
-		if Input.is_action_pressed("ui_up"):
-			trigger_fly()
-		elif Input.is_action_pressed("ui_accept"):
-			trigger_jump()
-		elif Input.is_action_just_pressed("ui_right") and not is_attacking:
-			is_attacking = true
-			$AnimatedSprite2D.play("attacking")
-		elif not is_attacking:
+		if not get_parent().game_running:
 			$AnimatedSprite2D.play("walking")
+		else:
+			$RunCol.disabled = false
+			if Input.is_action_pressed("ui_up"):
+				trigger_fly()
+			elif Input.is_action_pressed("ui_accept"):
+				trigger_jump()
+			elif Input.is_action_just_pressed("ui_right") and not is_attacking:
+				is_attacking = true
+				$AnimatedSprite2D.play("attacking")
+			elif not is_attacking:
+				$AnimatedSprite2D.play("walking")
 	else:
 		if last_launch == "fly":
 			$AnimatedSprite2D.play("flying")
