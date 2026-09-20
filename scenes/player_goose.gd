@@ -20,7 +20,7 @@ var is_alive := true
 func _ready():
 	sprite.animation_finished.connect(_on_animation_finished)
 	
-	# Catch the boolean argument passed from your hardware core
+	# bind global signals
 	SignalBus.goose_jumped.connect(on_hardware_jump_input)
 	SignalBus.goose_charged.connect(on_charge)
 	attack_hitbox.monitoring = false  # off by default
@@ -50,7 +50,7 @@ func _physics_process(delta):
 			if air_action_state == "flying": sprite.play("flying")
 			else: sprite.play("jumping")
 	
-	# Keyboard Fallbacks (Spacebar = regular jump, Up Arrow = simulated shake)
+	# Keyboard Fallbacks (Spacebar = regular jump, Up Arrow = double jump if pressed twice, right arrow slap attack)
 	if Input.is_action_just_pressed("ui_accept"): on_hardware_jump_input(false)
 	if Input.is_action_just_pressed("ui_up"): on_hardware_jump_input(true)
 	if Input.is_action_just_pressed("ui_right"): on_charge()
@@ -61,39 +61,36 @@ func _physics_process(delta):
 		position.y = CEILING_Y_LIMIT
 		if velocity.y < 0: velocity.y = 0
 
-# --- EXPLICIT ROUTER LAYER ---
-
-# The function parameters now catch the 'is_shake' packet from the bus!
 func on_hardware_jump_input(is_shake: bool):
-	# 🦘 BRANCH 1: GROUNDED JUMP
+	# Action: jump
 	# If you are on the floor, any vertical movement triggers a clean upward launch
 	if is_on_floor():
-		print("🦢 MECHANICS: Grounded Jump Triggered.")
+		print("🦢 ACTION TRIGGERED: Single jump")
 		air_action_state = "jumped"
 		velocity.y = JUMP_SPEED
 		jump_sound.play()
 		#sprite.play("jumping")
 		return
 
-	# 🦅 BRANCH 2: AIRBORNE FIXED-TIME FLIGHT
-	# If you are anywhere in the air and the phone registers a shake, turn on flight instantly!
+	# Action: double jump (flight)
+	# If you are anywhere in the air and the phone registers a shake, jump again
 	elif not is_on_floor() and is_shake:
-		# If we are already flying, ignore duplicate spammed signals so the timer doesn't freeze
+		# If we are already flying, ignore duplicate spammed signals 
 		if air_action_state == "flying": 
 			return
 			
-		print("🦅 MECHANICS: Airborne shake confirmed! Activating fixed flight timer loop.")
+		print("🦅 ACTION TRIGGERED: Double jump flight")
 		air_action_state = "flying"
 		flight_timer = FLY_DURATION
 		velocity.y = FLY_SPEED
 		jump_sound.play()
-		#sprite.play("flying") # 🎬 Triggers the flight animation instantly!
 		return
 
 
 func on_charge():
 	if not is_alive or is_attacking:
 		return
+	print("👋 ACTION TRIGGERED: Slap attack")
 	is_attacking = true
 	sprite.play("attacking")
 	attack_hitbox.set_deferred("monitorable", true)
