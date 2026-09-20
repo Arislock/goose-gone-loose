@@ -195,6 +195,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6d2e4"]
 size = Vector2(109, 170.25)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qg3co"]
+size = Vector2(107.75, 153.5)
+
 [node name="PlayerGoose" type="CharacterBody2D" unique_id=227304361 groups=["player"]]
 z_index = 1
 script = ExtResource("1_sh6gi")
@@ -212,3 +215,12 @@ shape = SubResource("RectangleShape2D_6d2e4")
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="." unique_id=1327752144]
 stream = ExtResource("17_klvbt")
+
+[node name="AttackHitbox" type="Area2D" parent="." unique_id=948161316]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox" unique_id=1506547430]
+position = Vector2(148.125, 11)
+shape = SubResource("RectangleShape2D_qg3co")
