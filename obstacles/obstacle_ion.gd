@@ -7,8 +7,7 @@ func _ready():
 	body_entered.connect(_on_body_entered)
 
 func _process(delta):
-	position.x -= speed * delta
-	if global_position.x < -200:
+	if global_position.x < $"..".get_node("Camera2D").position.x - 200:
 		SignalBus.obstacle_passed.emit()
 		queue_free()
 

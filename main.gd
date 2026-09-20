@@ -16,6 +16,7 @@ var game_running : bool
 
 func _ready():
 	screen_size = get_window().size
+	SignalBus.game_over.connect(_on_game_over)
 	new_game()
 
 func new_game():
@@ -31,13 +32,14 @@ func new_game():
 
 func _process(delta): 
 	if game_running:
-		speed = START_SPEED + score / SPEED_MODIFIER
+		speed = START_SPEED + float(score) / SPEED_MODIFIER
 		if speed > MAX_SPEED:
 			speed = MAX_SPEED
 		
 		# Move goose and camera
-		$PlayerGoose.position.x += speed
-		$Camera2D.position.x += speed
+		$PlayerGoose.position.x += speed * 60 * delta
+		$Camera2D.position.x += speed * 60 * delta
+		score += speed * 60 * delta
 		
 		# Update score
 		score += speed
@@ -54,7 +56,6 @@ func _process(delta):
 
 func show_score():
 	$HUD.get_node("Score").text = "SCORE: " + str(score/SCORE_MODIFIER)
-	SignalBus.game_over.connect(_on_game_over)
 
 func _on_game_over():
 	obstacle_manager.spawn_timer.stop()
