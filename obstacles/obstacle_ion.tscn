@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b1i3mb7nfi0rn"]
 
 [ext_resource type="Script" uid="uid://kv4epmug75gi" path="res://obstacles/obstacle_ion.gd" id="1_58p18"]
-[ext_resource type="Texture2D" uid="uid://dhg5fk4wbwinp" path="res://assets/img/obstacles/fire_PNG6042.png" id="2_se7r7"]
+[ext_resource type="Texture2D" uid="uid://c6ierbvplcujm" path="res://assets/img/obstacles/ion.png" id="2_se7r7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wgkke"]
 size = Vector2(64, 64)
@@ -15,5 +15,5 @@ shape = SubResource("RectangleShape2D_wgkke")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1217261309]
 position = Vector2(3, 1)
-scale = Vector2(0.037113003, 0.037711404)
+scale = Vector2(1, 1.027)
 texture = ExtResource("2_se7r7")
