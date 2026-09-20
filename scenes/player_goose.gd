@@ -15,12 +15,15 @@ var air_action_state := "grounded"
 var flight_timer := 0.0
 var is_alive := true
 
+@onready var attack_hitbox = $AttackHitbox
+
 func _ready():
 	sprite.animation_finished.connect(_on_animation_finished)
 	
 	# Catch the boolean argument passed from your hardware core
 	SignalBus.goose_jumped.connect(on_hardware_jump_input)
 	SignalBus.goose_charged.connect(on_charge)
+	attack_hitbox.monitoring = false  # off by default
 
 func _physics_process(delta):
 	if not is_alive:
@@ -88,12 +91,16 @@ func on_hardware_jump_input(is_shake: bool):
 
 
 func on_charge():
-	if not is_attacking:
-		is_attacking = true
-		sprite.play("attacking")
+	if not is_alive or is_attacking:
+		return
+	is_attacking = true
+	sprite.play("attacking")
+	attack_hitbox.monitoring = true  # turn hitbox on during the attack
 
 func _on_animation_finished():
-	if sprite.animation == "attacking": is_attacking = false
+	if sprite.animation == "attacking":
+		is_attacking = false
+		attack_hitbox.monitoring = false  # turn it back off once attack ends
 
 func on_hit_obstacle():
 	print("on_hit_obstacle CALLED")

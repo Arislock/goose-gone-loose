@@ -26,5 +26,6 @@ func _on_body_entered(body):
 		queue_free()
 
 func _on_attacked(area):
+	print("ATTACKED by: ", area.name)
 	defeated.emit()
 	queue_free()
