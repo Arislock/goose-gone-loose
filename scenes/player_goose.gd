@@ -13,6 +13,7 @@ const CEILING_Y_LIMIT : float = 100.0
 var is_attacking := false
 var air_action_state := "grounded" 
 var flight_timer := 0.0
+var is_alive := true
 
 func _ready():
 	sprite.animation_finished.connect(_on_animation_finished)
@@ -22,6 +23,9 @@ func _ready():
 	SignalBus.goose_charged.connect(on_charge)
 
 func _physics_process(delta):
+	if not is_alive:
+		return
+	
 	if air_action_state == "flying" and flight_timer > 0.0:
 		flight_timer -= delta
 		velocity.y = FLY_SPEED
@@ -88,3 +92,10 @@ func on_charge():
 
 func _on_animation_finished():
 	if sprite.animation == "attacking": is_attacking = false
+
+func on_hit_obstacle():
+	if not is_alive:
+		return
+	is_alive = false
+	sprite.play("jumping") # swap for a real "crash" animation once you have one
+	SignalBus.game_over.emit()

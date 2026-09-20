@@ -19,7 +19,9 @@ func _process(delta):
 		queue_free()
 
 func _on_body_entered(body):
+	print("Collision detected with: ", body.name)
 	if body.is_in_group("player"):
+		print("Player group confirmed, calling on_hit_obstacle")
 		body.on_hit_obstacle()
 		queue_free()
 
